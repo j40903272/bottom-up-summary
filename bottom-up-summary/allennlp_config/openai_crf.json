@@ -1,0 +1,69 @@
+{
+  "dataset_reader": {
+    "type": "sequence_tagging",
+    "word_tag_delimiter": "###",
+    "token_indexers": {
+      "tokens": {
+        "type": "single_id",
+        "lowercase_tokens": true
+      },
+      "elmo": {
+        "type": "elmo_characters"
+      },
+      "openai_transformer": {
+          "type": "openai_transformer_byte_pair",
+          "model_path": "https://s3-us-west-2.amazonaws.com/allennlp/models/openai-transformer-lm-2018.07.23.tar.gz"
+      }
+    }
+  },
+  "train_data_path": "/home/bottom-up-summary/data/train.txt",
+  "validation_data_path": "/home/bottom-up-summary/data/val.txt",
+  "model": {
+    "type": "crf_tagger",
+    "text_field_embedder": {
+        "allow_unmatched_keys":true,
+        "embedder_to_indexer_map": {
+            "tokens": ["tokens"],
+            "elmo": ["elmo"],
+            "openai_transformer": ["openai_transformer", "openai_transformer-offsets"]
+        },
+        "token_embedders": {
+            "tokens": {
+                    "type": "embedding",
+                    "embedding_dim": 100,
+                    "pretrained_file": "/home/bottom-up-summary/data/glove.6B.100d.txt",
+                    "trainable": true
+            },
+            "elmo": {
+                "type": "elmo_token_embedder",
+                "options_file": "/home/bottom-up-summary/data/elmo_2x4096_512_2048cnn_2xhighway_options.json",
+                "weight_file": "/home/bottom-up-summary/data/elmo_2x4096_512_2048cnn_2xhighway_weights.hdf5",
+                "do_layer_norm": true,
+                "dropout": 0.5
+            },
+            "openai_transformer": {
+                "type": "openai_transformer_embedder",
+                "transformer": {
+		    "model_path": "https://s3-us-west-2.amazonaws.com/allennlp/models/openai-transformer-lm-2018.07.23.tar.gz"
+		}
+            }
+        }
+    },
+    "encoder": {
+            "type": "lstm",
+            "input_size": 1892,
+            "hidden_size": 256,
+            "num_layers": 2,
+            "dropout": 0.5,
+            "bidirectional": true
+    }
+  },
+  "iterator": {"type": "basic", "batch_size": 32},
+  "trainer": {
+    "optimizer": "adagrad",
+    "grad_clipping": 2.0,
+    "num_epochs": 10,
+    "patience": 3,
+    "cuda_device": 0,
+  }
+}
