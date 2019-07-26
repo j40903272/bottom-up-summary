@@ -1,0 +1,12 @@
+MANIFEST.in
+setup.py
+files2rouge/__init__.py
+files2rouge/files2rouge.py
+files2rouge/settings.json
+files2rouge/settings.py
+files2rouge/utils.py
+files2rouge.egg-info/PKG-INFO
+files2rouge.egg-info/SOURCES.txt
+files2rouge.egg-info/dependency_links.txt
+files2rouge.egg-info/entry_points.txt
+files2rouge.egg-info/top_level.txt
