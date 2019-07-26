@@ -1,0 +1,27 @@
+python3.5 train.py -save_model models/wikihow \
+                -data data/wikihow \
+                -copy_attn \
+                -global_attention mlp \
+                -word_vec_size 128 \
+                -rnn_size 512 \
+                -layers 1 \
+                -encoder_type brnn \
+                -train_steps 200000 \
+                -max_grad_norm 2 \
+                -dropout 0. \
+                -batch_size 64 \
+                -valid_batch_size 64 \
+                -optim adagrad \
+                -learning_rate 0.15 \
+                -adagrad_accumulator_init 0.1 \
+                -reuse_copy_attn \
+                -copy_loss_by_seqlength \
+                -bridge \
+                -seed 7122 \
+                -world_size 1 \
+                -early_stopping 20 \
+                -gpu_ranks 0 \
+		-report_every 10 \
+		-log_file dada_exp/log \
+		-tensorboard \
+		-tensorboard_log_dir dada_exp/tensorboard_log
