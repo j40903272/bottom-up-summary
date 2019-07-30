@@ -1,11 +1,11 @@
 # Bottom-Up-Summary
-https://arxiv.org/pdf/1808.10792.pdf
+1. paper - https://arxiv.org/pdf/1808.10792.pdf
 
-https://github.com/sebastianGehrmann/bottom-up-summary
+2. github - https://github.com/sebastianGehrmann/bottom-up-summary
 
-http://opennmt.net/OpenNMT-py/Summarization.html
+3. document - http://opennmt.net/OpenNMT-py/Summarization.html
 
-https://github.com/harvardnlp/sent-summary
+4. data - https://github.com/harvardnlp/sent-summary
 
 ---
 
