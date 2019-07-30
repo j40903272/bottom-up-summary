@@ -1,7 +1,10 @@
 # Bottom-Up-Summary
 https://arxiv.org/pdf/1808.10792.pdf
+
 https://github.com/sebastianGehrmann/bottom-up-summary
+
 http://opennmt.net/OpenNMT-py/Summarization.html
+
 https://github.com/harvardnlp/sent-summary
 
 ---
