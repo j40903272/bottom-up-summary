@@ -83,17 +83,22 @@ probs = [softmax(p)[1] for p in cline["logits"][:len(words)]]
 
 ### data & format
  * /data  (line pairs)
+ ```
 src.train.txt
 src.val.txt
 tgt.train.txt
 tgt.val.txt
+```
+
 * bottom-up-summary/data/  (preprocess data)
+```
 train.pred.txt : json {"sentence":""}
 train.src.txt  : a line of 0/1
 train.txt      : [word]###[tag]
 val.pred.txt
 val.src.txt
 val.txt
+```
 
 ### openai-gpt config example
 ```
